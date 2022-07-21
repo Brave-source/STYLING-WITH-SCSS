@@ -11,8 +11,8 @@ html {
 
 body {
     margin: 0; //called resets
-    padding: 0; // resets or reset rules
-    font-family: util.$font;
+    padding: 0; font-family: util.$font;// resets or reset rules
+    font-style: util.$font;
     background-color: var(--background-color);
     color: var(--text-color);
 }

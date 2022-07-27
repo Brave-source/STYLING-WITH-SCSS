@@ -1,0 +1,78 @@
+@use '../util/' as util;
+
+.grid {
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: auto auto;
+   gap: util.rem(40);
+   max-width: 1000px;
+   width: min(100% - util.rem(40), util.rem(1000));
+   margin-inline: auto;
+
+
+   @include util.breakpoint(large) {
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto;
+   }
+
+
+   &__main, 
+   &__sidebar {
+    padding: util.rem(40);
+   }
+   
+    &__main {
+        background-color: hsl(240, 99%, 33%);
+        
+        
+        @include util.breakpoint(medium) {
+            background-color: hsl(120, 100%, 16%);
+        }
+
+        @include util.breakpoint(large) {
+            background-color: hsl(39, 100%, 35%);
+        }
+    }
+
+    &__sidebar {
+
+        @include util.breakpoints-down (medium) {
+            text-align: center;
+        }
+
+    }
+
+    // using @extend rules here to affect background color and properties
+    // @extend %widget or variable name with a placeholder ontop the page %widget { padding: ()};
+    
+
+    // helperclass or utility class
+    &__widget {
+        padding: util.rem(16);
+
+        &.magenta {
+            background-color: hsl(300, 100%, 30%);
+        }
+
+        &.green {
+            background-color: hsl(120, 100%, 27%);
+        }
+
+    }
+    
+    // using Interpolation rules here to affect background color and properties
+    // &__widget {
+    //    $widget: &;
+    //    background-color: hsl(300, 100%, 30%);
+    //    padding: util.rem(16);
+
+    //     &--green {
+    //         @extend #{$widget};
+    //         background-color: hsl(120, 100%, 27%);
+    //     }
+    // }
+
+    // use the @extend for elements that are closely related together.
+    // Sass Placeholder
+    // helper class or utility class
+}
